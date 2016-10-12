@@ -47,6 +47,7 @@ const TrendsHelper = {
         dataValues.push(value);
       }
       else {
+        dataValues.push(value);
         startCurrentRegression = value[0];
         // reverse the array to have the time values go from start time to finish time
         dataValues.reverse();
