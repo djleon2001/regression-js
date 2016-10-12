@@ -19,15 +19,15 @@
 			var dataSet        = Immutable.fromJS(data)
 			var startTime      = '1476302388975';
 			var endTime        = '1476302567969';
-			var numberOfTrends = 3;
+			var numberOfTrends = 20;
 			var microTrends    = TrendsHelper.getMicroTrends(dataSet,startTime,endTime,'linear',numberOfTrends);
-			$.plot($('.graph'), [				
-				{data: data, lines: { show: true }, points: { show: false }, label: 'SPEED'},
-				{data: microTrends[2], label: 'Micro Trend 1'},
-				{data: microTrends[1], label: 'Micro Trend 2'},
-				{data: microTrends[0], label: 'Micro Trend 3'},
-				
-			]);			
+
+			var chartSeties = [{data: data, lines: { show: true }, points: { show: false }, label: 'SPEED'}];
+			 microTrends.forEach(function(microTrend,idx) {
+			    chartSeties.push({data: microTrend, label: 'Micro Trend '+(idx+1)});
+			 });
+
+			$.plot($('.graph'), chartSeties);			
 
 		});
 
