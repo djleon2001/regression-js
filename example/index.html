@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>regression-js example</title>
+		<title>Miro Trends (regression-js)</title>
 		<script src="http://code.jquery.com/jquery.min.js"></script>
 		<script src="jquery.flot.js"></script>
 		<script src="immutable.min.js"></script>
@@ -20,13 +20,15 @@
 			var startTime      = '1476302388975';
 			var endTime        = '1476302567969';
 			var numberOfTrends = 20;
-			
+			var slopes         = {'SPEED':[],'SPEED2':[]};
+
 			//SPEED SET
 			var microTrends    = TrendsHelper.getMicroTrends(dataSet,startTime,endTime,'linear',numberOfTrends);
 			var chartSeties    = [{data: data, lines: { show: true }, points: { show: false }, label: 'SPEED', 
 								  color: '#757575'}];
 			 microTrends.forEach(function(microTrend,idx) {
 			    chartSeties.push({data: microTrend, color:'#ff9bbd'});
+			    slopes['SPEED'][idx] = TrendsHelper.getSlope(microTrend);
 			 });
 			
 			//SPEED 2 SET
@@ -40,10 +42,19 @@
 						      color: '#7c79e0'});
 			 microTrends.forEach(function(microTrend,idx) {
 			    chartSeties.push({data: microTrend, color:'#ffc107'});
+			    slopes['SPEED2'][idx] = TrendsHelper.getSlope(microTrend);
 			 });
 
-			//Plot data
+			//Plot data			
 			$.plot($('.graph'), chartSeties);			
+
+			//Create Slopes Table
+			slopes.SPEED.forEach(function(slope,idx) {
+				$('.slopes').append('<tr style="color:#757575"><td>SPEED</td><td>'+(idx+1)+'</td><td>'+slope+'</td></tr>');
+				$('.slopes').append('<tr style="color:#7c79e0"><td>SPEED2</td><td>'+(idx+1)+'</td><td>'+slopes.SPEED2[idx]+'</td></tr>');    
+			});
+			
+
 
 		});
 
@@ -74,5 +85,30 @@
 			<div class="graph"></div>
 			<h2></h2>
 		</div>
+		<table class="slopes">
+			<tr>
+				<th>SENSOR</th>
+				<th>MICRO TREND</th>
+				<th>SLOPE</th>
+			</rh>
+		</table>
 	</body>
 </html>
+<style>
+.slopes {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    text-align: left;
+    padding: 8px;
+}
+
+th {
+    background-color: #4CAF50;
+    color: white;
+}
+
+tr:nth-child(even){background-color: #f2f2f2}
+</style>

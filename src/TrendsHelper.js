@@ -59,5 +59,12 @@ const TrendsHelper = {
     });
     
     return regressionDataMicros;
+  },
+  getSlope(trendData){
+    var y2 = trendData[trendData.length-1][1];
+    var y1 = trendData[0][1];
+    var x2 = trendData[trendData.length-1][0];
+    var x1 = trendData[0][0];
+    return (y2-y1)/(x2-x1);
   }
 };
