@@ -3,8 +3,8 @@
 	<head>
 		<title>regression-js example</title>
 		<script src="http://code.jquery.com/jquery.min.js"></script>
-		<script src="http://tomalexander.co.nz/regression-js/jquery.flot.js"></script>
-		<script src="../build/regression.min.js"></script>
+		<script src="jquery.flot.js"></script>
+		<script src="../src/regression.js"></script>
 
 		<script>
 
@@ -13,17 +13,8 @@
 			// Data
 			var data = [
 
-				[-10, -738],
-				[-9, -520],
-				[-8, -350],
-				[-7, -222],
-				[-6, -130],
-				[-5, -68],
-				[-4, -30],
-				[-3, -10],
-				[-2, -2],
-				[-1, 0],
-				[0, 2],
+				
+				
 				[1, 10],
 				[2, 30],
 				[3, 68],
@@ -37,8 +28,8 @@
 			];
 
 			// do the regression (polynomial to the third degree)
-			var myRegression = regression('polynomial', data, 3);
-
+			var myRegression = regression('power', data);
+			console.log(myRegression)
 			// Plot the result
 			$.plot($('.graph'), [
 				{data: myRegression.points, label: 'Polynomial'},
