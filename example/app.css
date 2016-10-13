@@ -1,0 +1,31 @@
+html, body{
+	margin: 0;
+	padding: 0;
+	font-family: "Helvetica", sans-serif;
+	text-align: center;
+
+}
+.container{
+	margin: 0 auto;
+	width: 1170px;
+}
+.graph{
+	width: 1170px;
+	height: 500px;
+}
+.slopes {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    text-align: left;
+    padding: 8px;
+}
+
+th {
+    background-color: #4CAF50;
+    color: white;
+}
+
+tr:nth-child(even){background-color: #f2f2f2}
