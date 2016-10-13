@@ -30,15 +30,17 @@ function getRegression(regressionType, dataSet) {
 }
 const TrendsHelper = {
   getMicroTrends(trendData, dMin, dMax, regressionType, numberOfSeries){
-    let regressionDataMicros   = [];
-    const maxValue             = 150000;
-    const trendTimeSlices      = maxValue / numberOfSeries;
-    const data                 = trendData;
-    let startPoint             = dMax;
-    let interval               = 0;
-    let startCurrentRegression = dMax;
-    let dataValues             = [];
-
+      let regressionDataMicros   = [];
+      //      const maxValue             = 150;
+      let maxValue             = trendData.count();
+      const trendTimeSlices      = Math.round(maxValue / numberOfSeries);
+      //const trendTimeSlices      = maxValue / numberOfSeries;
+      const data                 = trendData;
+      let startPoint             = dMax;
+      let interval               = 0;
+      let startCurrentRegression = dMax;
+      let dataValues             = [];
+      
     // start at the last time value and work back in time
     data.reverse().toJS().forEach((value) => {
       interval = startCurrentRegression - value[0];
