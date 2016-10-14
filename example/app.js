@@ -165,13 +165,15 @@ function renderChart(){
 	[z++,72.25346309601603],
 	[z++,77.04953724846793],
 	[z++,73.39843483074058],
-	[z++,69.7119758670161]];
+	[z++,69.7119758670161]];	
 
-    var dataSet        = Immutable.fromJS(data);
-    var startTime      = 0
-    var endTime        = z-1;
     
-    var numberOfTrends = $('.trendsNumberInput').val();
+    var startTime = $('.start').val();
+    var endTime   = $('.end').val();
+        data      = data.slice(startTime,endTime);
+    var dataSet   = Immutable.fromJS(data);
+    
+    var numberOfTrends = $('.number').val();
     var slopes         = {'SPEED':[],'SPEED2':[]};
     
     //SPEED SET
