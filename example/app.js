@@ -7,6 +7,12 @@ function init(){
 	});
 	$( ".apply" ).click(function() {	  	  
 	  renderChart();	  
+	});
+	$( ".reset" ).click(function() {
+		$('.start').val(0);
+        $('.end').val(147);
+        $('.number').val(10);	  	  
+	  	renderChart();	  
 	});	
 	showLines = true;
 	renderChart();
