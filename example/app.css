@@ -23,7 +23,7 @@ th, td {
     padding: 8px;
 }
 
-th {
+th, button {
     background-color: #4CAF50;
     color: white;
 }

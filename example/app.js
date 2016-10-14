@@ -1,5 +1,15 @@
+var showLines;
+
 function init(){
-    
+	$( ".toggle" ).click(function() {
+	  showLines = !showLines;	  
+	  renderChart();	  
+	});
+	showLines = true;
+	renderChart();
+}
+
+function renderChart(){    
     // Data
     var z = 0;
     var data = [
@@ -163,10 +173,13 @@ function init(){
     var microTrends    = TrendsHelper.getMicroTrends(dataSet,
 						     startTime,endTime,
 						     'linear',numberOfTrends);
-    var chartSeries    = [{data: data,
+    var chartSeries    = [];
+    if(showLines){
+    	chartSeries.push({data: data,
 			   lines: { show: true }, points: { show: false },
 			   label: 'SPEED', 
-			   color: '#757575'}];
+			   color: '#757575'});	
+    }
 	//console.log('microTrends---->',microTrends );		   
     microTrends.forEach(function(microTrend,idx) {
 	chartSeries.push({data: microTrend, color:'#ff9bbd'});
@@ -194,10 +207,13 @@ function init(){
     microTrends    = TrendsHelper.getMicroTrends(newDataSet,
 						 startTime,endTime,
 						 'linear',numberOfTrends);
-    chartSeries.push({data: newData,
+    
+    if(showLines){
+    	chartSeries.push({data: newData,
 		      lines: { show: true }, points: { show: false },
 		      label: 'SPEED 2', 
-		      color: '#7c79e0'});
+		      color: '#7c79e0'});	
+    }
     microTrends.forEach(function(microTrend, idx) {
 	chartSeries.push({data: microTrend, color:'#ffc107'});
 	slopes['SPEED2'][idx] = TrendsHelper.getSlope(microTrend);
@@ -221,3 +237,5 @@ function init(){
 	}
     });
 }
+
+
