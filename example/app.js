@@ -224,6 +224,7 @@ function renderChart(){
 	   chartSeries);			
     
     //Create Slopes Table
+    $('.slopes').find("tr:gt(0)").remove();
     slopes.SPEED.forEach(function(slope,idx) {
 	var sloper = Math.round((slope-(slopes.SPEED2[idx])));
 	if( sloper > 1 || sloper < -1) {
