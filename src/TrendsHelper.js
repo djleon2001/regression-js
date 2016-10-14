@@ -55,7 +55,7 @@ const TrendsHelper = {
         dataValues.push(value);
       }
     });
-    //Add the missinf first slide 
+    //Add the missing first slice 
     dataValues.reverse();
     regressionDataMicros.push(getRegression(regressionType, dataValues));
 
