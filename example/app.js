@@ -154,6 +154,8 @@ function renderChart(){
 	[z++,67.72544583577432],
 	[z++,72.44379182879142],
 	[z++,69.11014160042252],
+	[z++,82.44379182879142],
+	[z++,49.11014160042252],
 	[z++,70.3005956718549],
 	[z++,71.34075258538277],
 	[z++,75.81107706758046],
@@ -166,13 +168,11 @@ function renderChart(){
     var startTime      = 0
     var endTime        = z-1;
     
-    var numberOfTrends = 10;
+    var numberOfTrends = 80;
     var slopes         = {'SPEED':[],'SPEED2':[]};
     
     //SPEED SET
-    var microTrends    = TrendsHelper.getMicroTrends(dataSet,
-						     startTime,endTime,
-						     'linear',numberOfTrends);
+    var microTrends    = TrendsHelper.getMicroTrends(dataSet, startTime,endTime, 'linear',numberOfTrends);
     var chartSeries    = [];
     if(showLines){
     	chartSeries.push({data: data,
@@ -188,25 +188,29 @@ function renderChart(){
     
     //SPEED 2 SET
     var newData = [];
-    var startAlter = 50;
-    var endAlter   = 85
-    var syn = 30;
+    var phaseOne = 50;
+    var phaseOneInc = 10;
+    var phaseTwo   = 95
+    var phaseTwoInc = 20;
+    var syn = 70;
     var counter = 0;
     var spacer = 100;
     data.forEach(function(value,  id) {
 	var point = value[1] + spacer;
 	
-	if( counter == startAlter || counter == endAlter ){
-	    point = point + syn + Math.random() ;
+	if( counter >= phaseOne && counter <= phaseOne + phaseOneInc ){
+	    //	    point = point + syn + Math.random() ;
+	    point = 200 + Math.random();
         }
-
+	else if( counter >= phaseTwo && counter <= phaseTwo + phaseTwoInc ){
+	    point = 100 + Math.random();
+	}
+	
         newData.push([value[0],point]);
 	counter++;
     });
     var newDataSet = Immutable.fromJS(newData);
-    microTrends    = TrendsHelper.getMicroTrends(newDataSet,
-						 startTime,endTime,
-						 'linear',numberOfTrends);
+    microTrends    = TrendsHelper.getMicroTrends(newDataSet, startTime,endTime, 'linear',numberOfTrends);
     
     if(showLines){
     	chartSeries.push({data: newData,
@@ -220,20 +224,19 @@ function renderChart(){
     }); 
     
     //Plot data			
-    $.plot($('.graph'),
-	   chartSeries);			
+    $.plot($('.graph'), chartSeries);			
     
     //Create Slopes Table
     $('.slopes').find("tr:gt(0)").remove();
     slopes.SPEED.forEach(function(slope,idx) {
-	var sloper = Math.round((slope-(slopes.SPEED2[idx])));
-	if( sloper > 1 || sloper < -1) {
+	var diff = Math.round((slope-(slopes.SPEED2[idx])));
+	if( diff != 0) {
 	    $('.slopes').append('<tr style="color:#757575"><td>'+(idx+1)+'</td><td>'+slope+'</td><td>'+
-				slopes.SPEED2[idx]+'</td><td>**** '+sloper+' ****</td></tr>');
+				slopes.SPEED2[idx]+'</td><td>**** '+diff+' ****</td><td>'+ data[(idx+1)][1] + '</td></tr>');
 	}
 	else {
 	    $('.slopes').append('<tr style="color:#7575757"><td>'+(idx+1)+'</td><td>'+slope+'</td><td>'+
-				slopes.SPEED2[idx]+'</td><td>'+sloper+'</td></tr>');
+				slopes.SPEED2[idx]+'</td><td>'+diff+ '</td><td>'+ data[(idx+1)][1] + '</td></tr>');
 	    
 	}
     });
