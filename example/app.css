@@ -18,6 +18,15 @@ html, body{
     width: 100%;
 }
 
+.trendsNumber{
+	margin : 10px;
+}
+
+input {
+	border: #4CAF50 1px solid;
+	font-size: 14px
+}
+
 th, td {
     text-align: left;
     padding: 8px;

@@ -5,6 +5,9 @@ function init(){
 	  showLines = !showLines;	  
 	  renderChart();	  
 	});
+	$( ".apply" ).click(function() {	  	  
+	  renderChart();	  
+	});	
 	showLines = true;
 	renderChart();
 }
@@ -168,7 +171,7 @@ function renderChart(){
     var startTime      = 0
     var endTime        = z-1;
     
-    var numberOfTrends = 80;
+    var numberOfTrends = $('.trendsNumberInput').val();
     var slopes         = {'SPEED':[],'SPEED2':[]};
     
     //SPEED SET
@@ -179,8 +182,7 @@ function renderChart(){
 			   lines: { show: true }, points: { show: false },
 			   label: 'SPEED', 
 			   color: '#757575'});	
-    }
-	//console.log('microTrends---->',microTrends );		   
+    }	
     microTrends.forEach(function(microTrend,idx) {
 	chartSeries.push({data: microTrend, color:'#ff9bbd'});
 	slopes['SPEED'][idx] = TrendsHelper.getSlope(microTrend);
