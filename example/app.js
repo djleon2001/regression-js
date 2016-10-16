@@ -226,15 +226,29 @@ function renderChart(){
     	chartSeries.push({data: newData,
 		      lines: { show: true }, points: { show: false },
 		      label: 'SPEED 2', 
-		      color: '#7c79e0'});	
+		      color: '#7c79e0',		   
+			  grid : { markings: markings }
+			  }
+		);	
     }
     microTrends.forEach(function(microTrend, idx) {
 	chartSeries.push({data: microTrend, color:'#ffc107'});
 	slopes['SPEED2'][idx] = TrendsHelper.getSlope(microTrend);
     }); 
     
+    // Markings 
+    var markings =  [ { xaxis: { from: 13, to: 28 }, yaxis: { from: 120, to: 145 }, color: "#d4eba0" },
+                      { xaxis: { from: 13, to: 28 }, yaxis: { from:  20, to:  45 }, color: "#d4eba0" }]
+    
+
     //Plot data			
-    $.plot($('.graph'), chartSeries);			
+    $.plot(
+    	$('.graph'), 
+    	chartSeries,
+    	{ grid: { markings: markings } }
+    );			
+
+
     
     //Create Slopes Table
     $('.slopes').find("tr:gt(0)").remove();
