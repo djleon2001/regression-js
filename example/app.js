@@ -237,8 +237,8 @@ function renderChart(){
     }); 
     
     // Markings 
-    var markings =  [ { xaxis: { from: 13, to: 28 }, yaxis: { from: 120, to: 145 }, color: "#d4eba0" },
-                      { xaxis: { from: 13, to: 28 }, yaxis: { from:  20, to:  45 }, color: "#d4eba0" }]
+    var markings =  [ { xaxis: { from: 42, to: 60 }, yaxis: { from: 160, to: 210 }, color: "#d4eba0" },
+                      { xaxis: { from: 42, to: 60 }, yaxis: { from:  52, to:  65 }, color: "#d4eba0" }]
     
 
     //Plot data			
