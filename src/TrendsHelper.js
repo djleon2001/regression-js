@@ -29,6 +29,9 @@ function getRegression(regressionType, dataSet) {
   return restoreDataSet(regression(regressionType, preparedDataSet, 3).points, firstTimeStamp);
 }
 const TrendsHelper = {
+  getMacroTrend(dataSet,regressionType){
+    return getRegression(regressionType, dataSet.toJS());
+  },
   getMicroTrends(trendData, dMin, dMax, regressionType, numberOfSeries){
     let regressionDataMicros   = [];
     let maxValue               = trendData.count();

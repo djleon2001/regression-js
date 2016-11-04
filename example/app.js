@@ -174,21 +174,23 @@ function renderChart(){
 	[z++,69.7119758670161]];	
 
     
-    var startTime = $('.start').val();
-    var endTime   = $('.end').val();
-        data      = data.slice(startTime,endTime);
-    var dataSet   = Immutable.fromJS(data);
+    var startTime      = $('.start').val();
+    var endTime        = $('.end').val();
+    data               = data.slice(startTime,endTime);
+    var dataSet        = Immutable.fromJS(data);
+    var regressionType = 'linear';
 
     var yellow = '#f4ee42';
     var purple = '#9b42f4';
     var red    = '#f44242';
     var color  = yellow;
+    var black  = '#000000';
 
     var numberOfTrends = $('.number').val();
     var slopes         = {'SPEED':[],'SPEED2':[]};
     
     //SPEED SET
-    var microTrends    = TrendsHelper.getMicroTrends(dataSet, startTime,endTime, 'linear',numberOfTrends);
+    var microTrends    = TrendsHelper.getMicroTrends(dataSet, startTime,endTime, regressionType,numberOfTrends);
     var chartSeries    = [];
     if(showLines){
     	chartSeries.push({data: data,
@@ -206,6 +208,12 @@ function renderChart(){
 	chartSeries.push({data: microTrend, color: color });
 	slopes['SPEED'][idx] = TrendsHelper.getSlope(microTrend);
     });
+
+    //Macro Trend SPEED
+    var marcroTrend = TrendsHelper.getMacroTrend(dataSet,regressionType);
+    chartSeries.push({data: marcroTrend,
+			   lines: { show: true }, points: { show: false }, color: black });
+
     
     //SPEED 2 SET
     var newData = [];
@@ -231,7 +239,7 @@ function renderChart(){
 	counter++;
     });
     var newDataSet = Immutable.fromJS(newData);
-    microTrends    = TrendsHelper.getMicroTrends(newDataSet, startTime,endTime, 'linear',numberOfTrends);
+    microTrends    = TrendsHelper.getMicroTrends(newDataSet, startTime,endTime, regressionType,numberOfTrends);
     
     if(showLines){
     	chartSeries.push({data: newData,
@@ -253,6 +261,12 @@ function renderChart(){
 		chartSeries.push({data: microTrend, color: color } );    //'#ffc107'});
 		slopes['SPEED2'][idx] = TrendsHelper.getSlope(microTrend);
 	});
+
+	//Macro Trend SPEED 2
+    marcroTrend = TrendsHelper.getMacroTrend(newDataSet,regressionType);
+    chartSeries.push({data: marcroTrend,
+			   lines: { show: true }, points: { show: false }, color: black });
+
     
     // Markings 
     var markings =  [ { xaxis: { from: 42, to: 60 }, yaxis: { from: 160, to: 210 }, color: "#d4eba0" },
