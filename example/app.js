@@ -199,8 +199,7 @@ function renderChart(){
     chartSeries.push({data: marcroTrend,
 			   lines: { show: true }, points: { show: false }, color: black });
     var macroSlope = TrendsHelper.getSlope(marcroTrend);
-    console.log('macroSlope',macroSlope );
-
+    
 	//Micro Trends SPEED
     var microTrends    = TrendsHelper.getMicroTrends(dataSet, startTime,endTime, regressionType,numberOfTrends);
     if(showLines){
@@ -209,7 +208,7 @@ function renderChart(){
 			   label: 'SPEED', 
 			   color: '#757575'});	
     }	
-    console.log('microTrends.length',microTrends.length );
+    
     microTrends.forEach(function(microTrend,idx) {
 		if( idx % 2 === 0) {
 		    color = red;
@@ -220,10 +219,9 @@ function renderChart(){
 		chartSeries.push({data: microTrend, color: color });
 		microSlope = TrendsHelper.getSlope(microTrend)
 		slopes['SPEED'][idx] = microSlope;
-		// console.log('Micro-->', foo, microSlope, macroSlope, Math.sqrt(microSlope - macroSlope) );
-		foo = foo + Math.sqrt(macroSlope - microSlope );
+		foo = foo + Math.pow((macroSlope - microSlope),2);
     });
-    foo = foo / microTrends.length;
+    foo = Math.sqrt(foo / microTrends.length);
     
     //SPEED 2 SET
     var newData = [];
@@ -278,13 +276,12 @@ function renderChart(){
 			chartSeries.push({data: microTrend, color: color } );    //'#ffc107'});
 			microSlope = TrendsHelper.getSlope(microTrend)
 			slopes['SPEED2'][idx] = microSlope;
-			// console.log('Micro-->', foo2, microSlope, macroSlope, Math.sqrt(microSlope - macroSlope) );
-			foo2 = foo2 + Math.sqrt(macroSlope - microSlope );
+			foo2 = foo2 + Math.pow((macroSlope - microSlope),2);
 	});
-	foo2 = foo2 / microTrends.length;
+	foo2 = Math.sqrt(foo2 / microTrends.length);
 
 	//Foos
-	$('.foos').append('<tr style="color:#757575"><td>'+foo2+'</td><td>'+foo2+'</td></tr>');
+	$('.foos').append('<tr style="color:#757575"><td>'+foo+'</td><td>'+foo2+'</td></tr>');
     
     // Markings 
     var markings =  [ { xaxis: { from: 42, to: 60 }, yaxis: { from: 160, to: 210 }, color: "#d4eba0" },
