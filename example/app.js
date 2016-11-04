@@ -178,7 +178,12 @@ function renderChart(){
     var endTime   = $('.end').val();
         data      = data.slice(startTime,endTime);
     var dataSet   = Immutable.fromJS(data);
-    
+
+    var yellow = '#f4ee42';
+    var purple = '#9b42f4';
+    var red    = '#f44242';
+    var color  = yellow;
+
     var numberOfTrends = $('.number').val();
     var slopes         = {'SPEED':[],'SPEED2':[]};
     
@@ -192,7 +197,13 @@ function renderChart(){
 			   color: '#757575'});	
     }	
     microTrends.forEach(function(microTrend,idx) {
-	chartSeries.push({data: microTrend, color:'#ff9bbd'});
+	if( idx % 2 === 0) {
+	    color = red;
+	}
+	else {
+	    color = yellow;
+	}
+	chartSeries.push({data: microTrend, color: color });
 	slopes['SPEED'][idx] = TrendsHelper.getSlope(microTrend);
     });
     
@@ -232,9 +243,16 @@ function renderChart(){
 		);	
     }
     microTrends.forEach(function(microTrend, idx) {
-	chartSeries.push({data: microTrend, color:'#ffc107'});
-	slopes['SPEED2'][idx] = TrendsHelper.getSlope(microTrend);
-    }); 
+    	//var avg = TrendsHelper.getAverage(microTrend);
+	if( idx % 2 === 0) { 
+	    color = purple;
+	}
+	else {
+	    color = yellow;
+	}
+		chartSeries.push({data: microTrend, color: color } );    //'#ffc107'});
+		slopes['SPEED2'][idx] = TrendsHelper.getSlope(microTrend);
+	});
     
     // Markings 
     var markings =  [ { xaxis: { from: 42, to: 60 }, yaxis: { from: 160, to: 210 }, color: "#d4eba0" },
@@ -247,7 +265,6 @@ function renderChart(){
     	chartSeries,
     	{ grid: { markings: markings } }
     );			
-
 
     
     //Create Slopes Table

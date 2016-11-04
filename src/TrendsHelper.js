@@ -39,8 +39,8 @@ const TrendsHelper = {
     let dataValues             = [];
     
     // start at the last time value and work back in time
-    data.reverse().toJS().forEach((value,idx) => {      
-      interval = startCurrentRegression - value[0];
+      data.reverse().toJS().forEach((value,idx) => {
+          interval = startCurrentRegression - value[0];
       if (interval < trendTimeSlices){
         dataValues.push(value);
       }
@@ -69,4 +69,14 @@ const TrendsHelper = {
     var x1 = trendData[0][0];
     return (y2-y1)/(x2-x1);
   }
+    /*
+    getAverage(data) {
+        var size = data.length;
+        var sum = 0;
+        data.forEach( function(value,  id) {
+            sum = sum + data[ idx ][1];
+        }
+        return sum / size;
+    }
+*/
 };
