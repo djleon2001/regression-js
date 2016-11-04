@@ -13,10 +13,12 @@ html, body{
 	width: 1170px;
 	height: 500px;
 }
-.slopes {
+.slopes, .foos {
     border-collapse: collapse;
     width: 100%;
+    margin-bottom: 20px;
 }
+
 
 .trendsNumber{
 	margin : 10px;

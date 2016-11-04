@@ -188,32 +188,42 @@ function renderChart(){
 
     var numberOfTrends = $('.number').val();
     var slopes         = {'SPEED':[],'SPEED2':[]};
-    
-    //SPEED SET
-    var microTrends    = TrendsHelper.getMicroTrends(dataSet, startTime,endTime, regressionType,numberOfTrends);
     var chartSeries    = [];
+    var foo            = 0;
+    var foo2           = 0;
+
+    //SPEED SET
+   
+    //Macro Trend SPEED
+    var marcroTrend = TrendsHelper.getMacroTrend(dataSet,regressionType);
+    chartSeries.push({data: marcroTrend,
+			   lines: { show: true }, points: { show: false }, color: black });
+    var macroSlope = TrendsHelper.getSlope(marcroTrend);
+    console.log('macroSlope',macroSlope );
+
+	//Micro Trends SPEED
+    var microTrends    = TrendsHelper.getMicroTrends(dataSet, startTime,endTime, regressionType,numberOfTrends);
     if(showLines){
     	chartSeries.push({data: data,
 			   lines: { show: true }, points: { show: false },
 			   label: 'SPEED', 
 			   color: '#757575'});	
     }	
+    console.log('microTrends.length',microTrends.length );
     microTrends.forEach(function(microTrend,idx) {
-	if( idx % 2 === 0) {
-	    color = red;
-	}
-	else {
-	    color = yellow;
-	}
-	chartSeries.push({data: microTrend, color: color });
-	slopes['SPEED'][idx] = TrendsHelper.getSlope(microTrend);
+		if( idx % 2 === 0) {
+		    color = red;
+		}
+		else {
+		    color = yellow;
+		}
+		chartSeries.push({data: microTrend, color: color });
+		microSlope = TrendsHelper.getSlope(microTrend)
+		slopes['SPEED'][idx] = microSlope;
+		// console.log('Micro-->', foo, microSlope, macroSlope, Math.sqrt(microSlope - macroSlope) );
+		foo = foo + Math.sqrt(macroSlope - microSlope );
     });
-
-    //Macro Trend SPEED
-    var marcroTrend = TrendsHelper.getMacroTrend(dataSet,regressionType);
-    chartSeries.push({data: marcroTrend,
-			   lines: { show: true }, points: { show: false }, color: black });
-
+    foo = foo / microTrends.length;
     
     //SPEED 2 SET
     var newData = [];
@@ -239,6 +249,13 @@ function renderChart(){
 	counter++;
     });
     var newDataSet = Immutable.fromJS(newData);
+
+    //Macro Trend SPEED 2
+    marcroTrend = TrendsHelper.getMacroTrend(newDataSet,regressionType);
+    chartSeries.push({data: marcroTrend,
+			   lines: { show: true }, points: { show: false }, color: black });
+
+    //Micro Trends SPEED 2
     microTrends    = TrendsHelper.getMicroTrends(newDataSet, startTime,endTime, regressionType,numberOfTrends);
     
     if(showLines){
@@ -252,27 +269,27 @@ function renderChart(){
     }
     microTrends.forEach(function(microTrend, idx) {
     	//var avg = TrendsHelper.getAverage(microTrend);
-	if( idx % 2 === 0) { 
-	    color = purple;
-	}
-	else {
-	    color = yellow;
-	}
-		chartSeries.push({data: microTrend, color: color } );    //'#ffc107'});
-		slopes['SPEED2'][idx] = TrendsHelper.getSlope(microTrend);
+		if( idx % 2 === 0) { 
+		    color = purple;
+		}
+		else {
+		    color = yellow;
+		}
+			chartSeries.push({data: microTrend, color: color } );    //'#ffc107'});
+			microSlope = TrendsHelper.getSlope(microTrend)
+			slopes['SPEED2'][idx] = microSlope;
+			// console.log('Micro-->', foo2, microSlope, macroSlope, Math.sqrt(microSlope - macroSlope) );
+			foo2 = foo2 + Math.sqrt(macroSlope - microSlope );
 	});
+	foo2 = foo2 / microTrends.length;
 
-	//Macro Trend SPEED 2
-    marcroTrend = TrendsHelper.getMacroTrend(newDataSet,regressionType);
-    chartSeries.push({data: marcroTrend,
-			   lines: { show: true }, points: { show: false }, color: black });
-
+	//Foos
+	$('.foos').append('<tr style="color:#757575"><td>'+foo2+'</td><td>'+foo2+'</td></tr>');
     
     // Markings 
     var markings =  [ { xaxis: { from: 42, to: 60 }, yaxis: { from: 160, to: 210 }, color: "#d4eba0" },
                       { xaxis: { from: 42, to: 60 }, yaxis: { from:  52, to:  65 }, color: "#d4eba0" }]
     
-
     //Plot data			
     $.plot(
     	$('.graph'), 
