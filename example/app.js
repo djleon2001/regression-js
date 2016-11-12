@@ -331,11 +331,170 @@ function renderChart(){
 	[y++, upper ],
 	[y++, lower * multiplier ]];
 
+    var j = 0;
+    var ypoint = 10
+    multipler = 1.5;
+        var trendUp = [
+	    [j++, (++ypoint + 125 ) ],
+	[j++, ypoint ],
+	    [j++, (++ypoint + 125 ) ],
+	[j++, ypoint * multiplier ],
+	    [j++, (++ypoint + 125 ) ],
+	[j++, ypoint ],
+	    [j++, (++ypoint + 125 ) ],
+	[j++, ypoint ],
+	    [j++, (++ypoint + 125 ) ],
+	[j++, ypoint ],
+	    [j++, (++ypoint + 125 ) ],
+	[j++, ypoint * multiplier ],
+	    [j++, (++ypoint + 125 ) ],
+	[j++, ypoint * multiplier ],
+	    [j++, (++ypoint + 125 ) ],
+	[j++, ypoint * multiplier ],
+	    [j++, (++ypoint + 125 ) ],
+	[j++, ypoint * multiplier ],
+	    [j++, (++ypoint + 125 ) ],
+	[j++, ypoint ],
+	    [j++, (++ypoint + 125 ) ],
+	[j++, ypoint  ],
+	    [j++, (++ypoint + 125 ) ],
+	[j++, ypoint ],
+	    [j++, (++ypoint + 125 ) ],
+	[j++, ypoint * multiplier ],
+	    [j++, (++ypoint + 125 ) ],
+	[j++, ypoint * multiplier ],
+	    [j++, (++ypoint + 125 ) ],
+	[j++, ypoint * multiplier ],
+	    [j++, (++ypoint + 125 ) ],
+	[j++, ypoint ],
+	    [j++, (++ypoint + 125 ) ],
+	[j++, ypoint * multiplier ],
+	    [j++, ypoint-- ],
+	[j++, ypoint ],
+	    [j++, ypoint--],
+	[j++, ypoint ],
+	    [j++, ypoint-- ],
+	[j++, ypoint ],
+	    [j++, ypoint-- ],
+	    [j++, (ypoint * -1 * multiplier) ],
+	    [j++, (ypoint * -1 * multiplier) ],
+	    [j++, (ypoint * -1 * multiplier) ],
+	    [j++, (ypoint * -1 * multiplier) ],
+	    [j++, (ypoint * -1 * multiplier) ],
+	    [j++, (ypoint * -1 * multiplier) ],
+	    [j++, (ypoint * -1 * multiplier) ],
+	    [j++, (ypoint * -1 * multiplier) ],	    
+	    [j++, (++ypoint + 125 ) ],
+	[j++, ypoint ],
+	    [j++, (++ypoint + 125 ) ],
+	[j++, ypoint ],
+	    [j++, (++ypoint + 125 ) ],
+	[j++, ypoint ],
+	    [j++, (++ypoint + 125 ) ],
+	[j++, ypoint * multiplier ],
+	    [j++, (++ypoint + 125 ) ],
+	[j++, ypoint * multiplier ],
+	    [j++, (++ypoint + 125 ) ],
+	[j++, ypoint * multiplier ],
+	    [j++, (++ypoint + 125 ) ],
+	[j++, ypoint ],
+	    [j++, (++ypoint + 125 ) ],
+	[j++, ypoint * multiplier ],
+	    [j++, (++ypoint + 125 ) ],
+	[j++, ypoint ],
+	    [j++, (++ypoint + 125 ) ],
+	[j++, ypoint ],
+	    [j++, (++ypoint + 125 ) ],
+	[j++, ypoint ],
+	    [j++, (++ypoint + 125 ) ],
+	[j++, ypoint * multiplier ],
+	    [j++, (++ypoint + 125 ) ],
+	[j++, ypoint * multiplier ],
+	    [j++, (++ypoint + 125 ) ],
+	[j++, ypoint * multiplier ],
+	    [j++, (++ypoint + 125 ) ],
+	[j++, ypoint * multiplier ],
+	    [j++, (++ypoint + 125 ) ],
+	[j++, ypoint ],
+	    [j++, (++ypoint + 125 ) ],
+	[j++, ypoint ],
+	    [j++, (++ypoint + 125 ) ],
+	[j++, ypoint ],
+	    [j++, (++ypoint + 125 ) ],
+	[j++, ypoint * multiplier ],
+	    [j++, (++ypoint + 125 ) ],
+	[j++, ypoint * multiplier ],
+	    [j++, (++ypoint + 125 ) ],
+	[j++, ypoint * multiplier ],
+	    [j++, (++ypoint + 125 ) ],
+	[j++, ypoint ],
+	    [j++, (++ypoint + 125 ) ],
+	[j++, ypoint * multiplier ],
+	    [j++, (++ypoint + 125 ) ],
+	[j++, ypoint ],
+	    [j++, (++ypoint + 125 ) ],
+	[j++, ypoint ],
+	    [j++, (++ypoint + 125 ) ],
+	[j++, ypoint ],
+	    [j++, (++ypoint + 125 ) ],
+	[j++, ypoint * multiplier ],
+	    [j++, (++ypoint + 125 ) ],
+	[j++, ypoint * multiplier ],
+	    [j++, (++ypoint + 125 ) ],
+	[j++, ypoint * multiplier ],
+	    [j++, (++ypoint + 125 ) ],
+	    [j++, ypoint * multiplier ],
+
+	    [j++, ypoint-- ],
+	    [j++, (ypoint * -1 * multiplier) ],
+	    [j++, (ypoint * -1 * multiplier) ],
+	    [j++, (ypoint * -1 * multiplier) ],
+	    [j++, (ypoint * -1 * multiplier) ],
+	    [j++, (ypoint * -1 * multiplier) ],
+	    [j++, (ypoint * -1 * multiplier) ],
+	    [j++, (ypoint * -1 * multiplier) ],
+	    [j++, (ypoint * -1 * multiplier) ],	    
+	    [j++, (++ypoint + 125 ) ],
+
+	    [j++, (++ypoint*2 + 125 ) ],
+	[j++, ypoint*2 * multiplier ],
+	    [j++, (++ypoint*2 + 125 ) ],
+	[j++, ypoint*2 ],
+	    [j++, (++ypoint*2 + 125 ) ],
+	[j++, ypoint*2 * multiplier ],
+	    [j++, (++ypoint*2 + 125 ) ],
+	[j++, ypoint*2 ],
+	    [j++, (++ypoint*2 + 125 ) ],
+	[j++, ypoint*2 ],
+	    [j++, (++ypoint*2 + 125 ) ],
+	[j++, ypoint*2 ],
+	    [j++, (++ypoint*2 + 125 ) ],
+	[j++, ypoint*2 * multiplier ],
+	    [j++, (++ypoint*2 + 125 ) ],
+	[j++, ypoint*2 * multiplier ],
+	    [j++, (++ypoint*2 + 125 ) ],
+	[j++, ypoint*2 * multiplier ],
+	    [j++, (++ypoint*2 + 125 ) ],
+	[j++, ypoint*2 * multiplier ],
+	    [j++, (++ypoint*2 + 125 ) ],
+	[j++, ypoint*2 ],
+	    [j++, (++ypoint*2 + 125 ) ],
+	[j++, ypoint*2 ],
+	    [j++, (++ypoint*2 + 125 ) ],
+	[j++, ypoint*2 ],
+	    [j++, (++ypoint*2 + 125 ) ],
+	[j++, ypoint*2 * multiplier ],
+	    [j++, (++ypoint*2 + 125 ) ],
+	[j++, ypoint*2 * multiplier ],
+	    [j++, (++ypoint*2 + 125 ) ],
+	[j++, ypoint*2 * multiplier ]];
+
 
     var startTime      = $('.start').val();
     var endTime        = $('.end').val();
     data               = data.slice(startTime,endTime);
-    //data               = streamer.slice(startTime,endTime);
+    //    data               = streamer.slice(startTime,endTime);
+    //data               = trendUp.slice(startTime,endTime);
     var dataSet        = Immutable.fromJS(data);
     var regressionType = 'linear';
 
@@ -346,29 +505,29 @@ function renderChart(){
     var black  = '#000000';
 
     var numberOfTrends      = $('.number').val();
-    var slopes              = {'SPEED':[],'SPEED2':[]};
+    var slopes              = {'BASE_LINE':[],'TOP_LINE':[]};
     var chartSeries         = [];
-    var foo                 = 0;
-    var foo2                = 0;
+    var base                 = 0;
+    var top2                = 0;
     var microSlopesSum      = 0;
-    var microSlopesSum2     = 0;
+    var microSlopesSumTop     = 0;
     var microSlopesAverage  = 0;
-    var microSlopesAverage2 = 0;
+    var microSlopesAverageTop = 0;
 
-    //SPEED SET
+    //BASE LINE
    
-    //Macro Trend SPEED
+    //Macro Trend BASE LINE
     var marcroTrend = TrendsHelper.getMacroTrend(dataSet,regressionType);
     chartSeries.push({data: marcroTrend,
 			   lines: { show: true }, points: { show: false }, color: black });
     var macroSlope = TrendsHelper.getSlope(marcroTrend);
     
-	//Micro Trends SPEED
+	//Micro Trends BASE LINE
     var microTrends    = TrendsHelper.getMicroTrends(dataSet, startTime,endTime, regressionType,numberOfTrends);
     if(showLines){
     	chartSeries.push({data: data,
 			   lines: { show: true }, points: { show: false },
-			   label: 'SPEED', 
+			   label: 'BASE LINE', 
 			   color: '#757575'});	
     }	
     
@@ -381,15 +540,15 @@ function renderChart(){
 		}
 		chartSeries.push({data: microTrend, color: color });
 		microSlope           = TrendsHelper.getSlope(microTrend)
-		slopes['SPEED'][idx] = microSlope;
-		foo                  = foo + Math.pow((macroSlope - microSlope),2);
+		slopes['BASE_LINE'][idx] = microSlope;
+		base                  = base + Math.pow((macroSlope - microSlope),2);
 		microSlopesSum       = microSlopesSum + microSlope;
     });
-    foo                = Math.sqrt(foo / microTrends.length);
+    base                = Math.sqrt(base / microTrends.length);
     microSlopesAverage = microSlopesSum / microTrends.length;
 
     
-    //SPEED 2 SET
+    //TOP LINE SET
     var newData = [];
     var phaseOne = 50;
     var phaseOneInc = 10;
@@ -414,19 +573,19 @@ function renderChart(){
     });
     var newDataSet = Immutable.fromJS(newData);
 
-    //Macro Trend SPEED 2
+    //Macro Trend TOP LINE
     marcroTrend = TrendsHelper.getMacroTrend(newDataSet,regressionType);
     chartSeries.push({data: marcroTrend,
 			   lines: { show: true }, points: { show: false }, color: black });
-    var macroSlope2 = TrendsHelper.getSlope(marcroTrend);
+    var macroSlopeTop = TrendsHelper.getSlope(marcroTrend);
 
-    //Micro Trends SPEED 2
+    //Micro Trends TOP LINE
     microTrends    = TrendsHelper.getMicroTrends(newDataSet, startTime,endTime, regressionType,numberOfTrends);
     
     if(showLines){
     	chartSeries.push({data: newData,
 		      lines: { show: true }, points: { show: false },
-		      label: 'SPEED 2', 
+		      label: 'TOP LINE', 
 		      color: '#7c79e0',		   
 			  grid : { markings: markings }
 			  }
@@ -442,25 +601,25 @@ function renderChart(){
 		}
 			chartSeries.push({data: microTrend, color: color } );    //'#ffc107'});
 			microSlope            = TrendsHelper.getSlope(microTrend)
-			slopes['SPEED2'][idx] = microSlope;
-			foo2                  = foo2 + Math.pow((macroSlope2 - microSlope),2);
-			microSlopesSum2       = microSlopesSum2 + microSlope;
+			slopes['TOP_LINE'][idx] = microSlope;
+			top2                  = top2 + Math.pow((macroSlopeTop - microSlope),2);
+			microSlopesSumTop       = microSlopesSumTop + microSlope;
 	});
-	foo2                = Math.sqrt(foo2 / microTrends.length);
-	microSlopesAverage2 = microSlopesSum2 / microTrends.length;
+	top2                = Math.sqrt(top2 / microTrends.length);
+	microSlopesAverageTop = microSlopesSumTop / microTrends.length;
 	
-	//Foos
-	$('.foos').append('<tr style="color:#757575"><td>'+foo+'</td><td>'+foo2+'</td></tr>');
+	//Bases
+	$('.bases').append('<tr style="color:#757575"><td>'+base+'</td><td>'+top2+'</td></tr>');
 
 
 	//MacroSlopes Average
-	$('.macroSlopes').append('<tr style="color:#757575"><td>'+macroSlope+'</td><td>'+macroSlope2+'</td></tr>');
+	$('.macroSlopes').append('<tr style="color:#757575"><td>'+macroSlope+'</td><td>'+macroSlopeTop+'</td></tr>');
 
 	//MicroSlopesAverage
-	$('.microSlopes').append('<tr style="color:#757575"><td>'+microSlopesAverage+'</td><td>'+microSlopesAverage2+'</td></tr>');
+	$('.microSlopes').append('<tr style="color:#757575"><td>'+microSlopesAverage+'</td><td>'+microSlopesAverageTop+'</td></tr>');
 
 	//MacroSlopes Sum
-	$('.microSlopesSum').append('<tr style="color:#757575"><td>'+microSlopesSum+'</td><td>'+microSlopesSum2+'</td></tr>');
+	$('.microSlopesSum').append('<tr style="color:#757575"><td>'+microSlopesSum+'</td><td>'+microSlopesSumTop+'</td></tr>');
 
     
     // Markings 
@@ -477,15 +636,15 @@ function renderChart(){
     
     //Create Slopes Table
     $('.slopes').find("tr:gt(0)").remove();
-    slopes.SPEED.forEach(function(slope,idx) {
-	var diff = Math.round((slope-(slopes.SPEED2[idx])));
+    slopes.BASE_LINE.forEach(function(slope,idx) {
+	var diff = Math.round((slope-(slopes.TOP_LINE[idx])));
 	if( diff != 0) {
 	    $('.slopes').append('<tr style="color:#757575"><td>'+(idx+1)+'</td><td>'+slope+'</td><td>'+
-				slopes.SPEED2[idx]+'</td><td>**** '+diff+' ****</td><td>'+ data[(idx+1)][1] + '</td></tr>');
+				slopes.TOP_LINE[idx]+'</td><td>**** '+diff+' ****</td><td>'+ data[(idx+1)][1] + '</td></tr>');
 	}
 	else {
 	    $('.slopes').append('<tr style="color:#7575757"><td>'+(idx+1)+'</td><td>'+slope+'</td><td>'+
-				slopes.SPEED2[idx]+'</td><td>'+diff+ '</td><td>'+ data[(idx+1)][1] + '</td></tr>');
+				slopes.TOP_LINE[idx]+'</td><td>'+diff+ '</td><td>'+ data[(idx+1)][1] + '</td></tr>');
 	    
 	}
     });
