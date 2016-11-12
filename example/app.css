@@ -13,7 +13,7 @@ html, body{
 	width: 1170px;
 	height: 500px;
 }
-.slopes, .foos {
+.slopes, .foos, .macroSlopes, .microSlopes, .microSlopesSum {
     border-collapse: collapse;
     width: 100%;
     margin-bottom: 20px;

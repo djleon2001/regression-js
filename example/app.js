@@ -345,11 +345,15 @@ function renderChart(){
     var color  = yellow;
     var black  = '#000000';
 
-    var numberOfTrends = $('.number').val();
-    var slopes         = {'SPEED':[],'SPEED2':[]};
-    var chartSeries    = [];
-    var foo            = 0;
-    var foo2           = 0;
+    var numberOfTrends      = $('.number').val();
+    var slopes              = {'SPEED':[],'SPEED2':[]};
+    var chartSeries         = [];
+    var foo                 = 0;
+    var foo2                = 0;
+    var microSlopesSum      = 0;
+    var microSlopesSum2     = 0;
+    var microSlopesAverage  = 0;
+    var microSlopesAverage2 = 0;
 
     //SPEED SET
    
@@ -376,11 +380,14 @@ function renderChart(){
 		    color = yellow;
 		}
 		chartSeries.push({data: microTrend, color: color });
-		microSlope = TrendsHelper.getSlope(microTrend)
+		microSlope           = TrendsHelper.getSlope(microTrend)
 		slopes['SPEED'][idx] = microSlope;
-		foo = foo + Math.pow((macroSlope - microSlope),2);
+		foo                  = foo + Math.pow((macroSlope - microSlope),2);
+		microSlopesSum       = microSlopesSum + microSlope;
     });
-    foo = Math.sqrt(foo / microTrends.length);
+    foo                = Math.sqrt(foo / microTrends.length);
+    microSlopesAverage = microSlopesSum / microTrends.length;
+
     
     //SPEED 2 SET
     var newData = [];
@@ -411,6 +418,7 @@ function renderChart(){
     marcroTrend = TrendsHelper.getMacroTrend(newDataSet,regressionType);
     chartSeries.push({data: marcroTrend,
 			   lines: { show: true }, points: { show: false }, color: black });
+    var macroSlope2 = TrendsHelper.getSlope(marcroTrend);
 
     //Micro Trends SPEED 2
     microTrends    = TrendsHelper.getMicroTrends(newDataSet, startTime,endTime, regressionType,numberOfTrends);
@@ -433,14 +441,27 @@ function renderChart(){
 		    color = yellow;
 		}
 			chartSeries.push({data: microTrend, color: color } );    //'#ffc107'});
-			microSlope = TrendsHelper.getSlope(microTrend)
+			microSlope            = TrendsHelper.getSlope(microTrend)
 			slopes['SPEED2'][idx] = microSlope;
-			foo2 = foo2 + Math.pow((macroSlope - microSlope),2);
+			foo2                  = foo2 + Math.pow((macroSlope2 - microSlope),2);
+			microSlopesSum2       = microSlopesSum2 + microSlope;
 	});
-	foo2 = Math.sqrt(foo2 / microTrends.length);
-
+	foo2                = Math.sqrt(foo2 / microTrends.length);
+	microSlopesAverage2 = microSlopesSum2 / microTrends.length;
+	
 	//Foos
 	$('.foos').append('<tr style="color:#757575"><td>'+foo+'</td><td>'+foo2+'</td></tr>');
+
+
+	//MacroSlopes Average
+	$('.macroSlopes').append('<tr style="color:#757575"><td>'+macroSlope+'</td><td>'+macroSlope2+'</td></tr>');
+
+	//MicroSlopesAverage
+	$('.microSlopes').append('<tr style="color:#757575"><td>'+microSlopesAverage+'</td><td>'+microSlopesAverage2+'</td></tr>');
+
+	//MacroSlopes Sum
+	$('.microSlopesSum').append('<tr style="color:#757575"><td>'+microSlopesSum+'</td><td>'+microSlopesSum2+'</td></tr>');
+
     
     // Markings 
     var markings =  [ { xaxis: { from: 42, to: 60 }, yaxis: { from: 160, to: 210 }, color: "#d4eba0" },
