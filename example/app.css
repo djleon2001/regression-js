@@ -11,7 +11,7 @@ html, body{
 }
 .graph{
 	width: 1170px;
-	height: 500px;
+	height: 800px;
 }
 .slopes, .bases, .macroSlopes, .microSlopes, .microSlopesSum {
     border-collapse: collapse;
@@ -26,7 +26,8 @@ html, body{
 
 input {
 	border: #4CAF50 1px solid;
-	font-size: 14px
+	font-size: 14px;
+	width: 60px;
 }
 
 th, td {
